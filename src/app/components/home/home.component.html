@@ -1,0 +1,43 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>R fabHung</title>
+    <meta name="description" content="">
+</head>
+
+<body class="home">
+    <header>
+        <nav>
+            <ul>
+                <li style="font-size: larger;" class="home" *ngIf="admin.allias != 'string'">
+                    <a><strong style="font-weight: 800;">{{admin.allias}}</strong></a>
+                </li>
+                <li style="font-size: larger;" *ngIf="admin.about != ''">
+                    <div *ngIf="admin?.about?.length > 0">
+                        <a routerLink="/about">about</a>
+                    </div>
+                </li>
+                <li style="font-size: larger;" *ngIf="admin.email != 'string'">
+                    <div *ngIf="admin.email != 'string'">
+                        <a [href]="'mailto:'+admin.email">contact</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <div class="row">
+            <article *ngFor="let i of projects let ind = index"
+                class="col-12 col-sm-12 col-lg-{{desorganizer[ind]}} offset-1" >
+                <a (click)="showProjectDetails(i.id)" *ngIf="imagesLoaded && getImageById(i.id)">
+                    <img class="project__featuredimg" src="{{server}}/images/getImage/{{i.id}}/{{getImageById(i.id).name}}">
+                    <!-- para hacer que aparezca otra imagen cuando se va a tocar el proyecto-->
+                    <!--img class="project__featuredimg hover"
+                    src="../../../assets/images/bildschirmfoto_2016-11-16_um_13_23_53_copy_3x_2.png" alt=""-->
+                </a>
+            </article>
+        </div>
+    </main>
+
+</body>

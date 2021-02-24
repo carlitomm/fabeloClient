@@ -1,0 +1,54 @@
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>about</title>
+	<meta name="description" content="">
+</head>
+
+<body class="page-project">
+
+	<header>
+		<nav>
+			<ul>
+				<li style ="font-size: larger;" class="home">
+					<a routerLink="/">{{admin.allias}}</a>
+				</li>
+				<li style ="font-size: larger;">
+					<div *ngIf="admin?.about?.length > 0">
+                        <a routerLink="/about">about</a>
+                    </div>
+				</li>
+                <li style="font-size: larger;" *ngIf="admin.email != 'string'">
+                    <div *ngIf="admin.email != 'string'">
+                        <a [href]="'mailto:'+admin.email">contact</a>
+                    </div>
+                </li>
+
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main">
+
+		<section class="section__text grid">
+			<div class="col-lg-6 col-sm-12 offset-1">
+				<p style="margin-left:0cm;margin-right:0cm; font-size: larger;" [innerHTML]="replaceURLText(admin.about)"></p>
+			</div>
+		</section>
+		
+	</main>
+
+	<!-- footer -->
+	<!--footer id="footer" role="contentinfo">
+
+	</footer>
+	<script src="about_files/jquery_002.js"></script>
+	<script src="about_files/jquery.js"></script>
+	<script src="about_files/main-min.js"></script>
+	<script src="../../../assets/scripts/parallax.min.js"></script>
+	<script>
+		var scene = document.getElementById('scene');
+		var parallaxInstance = new Parallax(scene);
+	</script-->
+
+</body>

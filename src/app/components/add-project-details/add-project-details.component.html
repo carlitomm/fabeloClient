@@ -1,0 +1,155 @@
+<div class="row">
+    <div class="col-sm-12 col-lg-6 col-12">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-12">
+                <h1>Title: {{project.titulo}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-12">
+                <label  for="titulo">Title</label>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-12">
+                <input class="form-control" type="text" [(ngModel)]="project.titulo" name="Project Title">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-12">
+                <label  for="fecha">Creation Date</label>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-12">
+                <input class="form-control" type="date" [(ngModel)]="project.fecha" name="creation date">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-12">
+                <label  for="dimensiones">Size</label>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-12">
+                <input class="form-control" type="text" [(ngModel)]="project.dimensiones" name="dimensiones">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-12">
+                <label  for="material">Material</label>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-12">
+                <input class="form-control" type="text" [(ngModel)]="project.material" name="material">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-12">
+                <label for="descripcion">Description</label>
+            </div>
+            <div class="col-sm-12 col-lg-12 col-12">
+                <textarea class="form-control" [(ngModel)]="project.descripcion" name="description"></textarea>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="project?.videos?.length > 0">
+            <div class="col-sm-12 col-lg-12 col-12">
+                <label for="descripcion">Video Dimensions</label>
+            </div>
+            <div class="col-sm-12 col-lg-12 col-12">
+                <textarea class="form-control" [(ngModel)]="project.videoDimensions" name="videoDimensions"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-6 col-12">
+        <div style="margin-bottom: 10px;">
+            <h1>Images<br></h1>
+            <div>
+                <input  #imageInput type="file" multiple accept="image/*" (change)="pushImage(imageInput)">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item justify-content-between" *ngFor="let i of project.images; let ind = index">
+                    {{i.nombre}}
+                    <span (click)="removeImageFile(ind)">
+                        <img src="../../../assets/images/delete.PNG" width="25px" id="icon" alt="User Icon">
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <h1>YouTube Videos</h1>
+            <div class="row">
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input class="form-control" [(ngModel)]="nombre" placeholder="Add Name" style="margin-left: 10px;">
+                </div>
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input class="form-control" [(ngModel)]="url" placeholder="Add URL" style="margin-left: 10px;">
+                </div>
+                <div class="col-sm-12 col-lg-2 col-12">
+                    <button class="btn btn-primary btn-sm" style="margin-left: 10px; height: 38px; width: 70%;" (click)="pushVideo()">Add</button>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li *ngFor="let i of project.videos; let ind = index">
+                    <div *ngIf="i?.url?.length > 0">
+                        {{i.nombre}}
+                        <span (click)="removeVideo(ind)">X</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1>Local Videos</h1>
+            <div id='fileSelector'>
+                <input type="file" name="fileUpload" id="fileUpload" multiple accept="video/*" ng2FileSelect
+                    [uploader]="uploader">
+            </div>
+            <ul class="list-group">
+                <li *ngFor="let i of project.videos; let ind = index">
+                    <div *ngIf="i?.url?.length == 0">
+                        {{i.nombre}}
+                        <span (click)="removeVideo(ind)">
+                            <img src="../../../assets/images/delete.PNG" width="25px" id="icon" alt="User Icon">
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <div class="row uploadList" *ngFor="let item of uploader.queue">
+                <div class="col-sm-4">{{item.file.name}}</div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-dark"
+                        (click)="pushVideoFile(item.file); item.remove()">Upload</button>
+                    <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel</button>
+                </div>
+            </div>
+            <!--div class="row" *ngIf="uploader?.queue?.length > 0">
+                <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload all videos</button>
+            </div-->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-1.5">
+        <div *ngIf=isCreate>
+            <div *ngIf="imagesFile?.length == 0">
+                <button type="button" class="btn btn-primary btn-lg" disabled (click)="submitProject()"
+                    >Create Project</button>
+            </div>
+            <div *ngIf="imagesFile?.length > 0">
+                <button type="button" class="btn btn-primary btn-lg" (click)="submitProject()"
+                    >Create Project</button>
+            </div>
+        </div>
+        <div *ngIf=isUpdate>
+            <div *ngIf="project?.images?.length == 0">
+                <button type="button" class="btn btn-primary btn-lg" disabled (click)="upgradeProject()"
+                    routerLink="/dashboard">Update Project</button>
+            </div>
+            <div *ngIf="project?.images?.length > 0">
+                <button type="button" class="btn btn-primary btn-lg" (click)="upgradeProject()"
+                    routerLink="/dashboard">Update Project</button>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-danger btn-lg" routerLink="/dashboard">Cancel</button>
+</div>

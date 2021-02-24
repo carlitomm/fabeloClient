@@ -1,0 +1,193 @@
+/*@import url(mediaelementplayer.min.css);*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+td{
+  padding: 5px;
+}
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/** BREAKPOINTS **/
+main, .grider, .grid {
+  width: 100%; }
+  /*@media (min-width: 800px) {
+    main, .grider, .grid {
+      display: flex;
+      flex-wrap: wrap; } }*/
+  main article, main div, main figure, .grider article, .grider div, .grider figure, .grid article, .grid div, .grid figure {
+    width: 100%; }
+    /*@media (min-width: 800px) {
+      main article.col-1, main div.col-1, main figure.col-1, .grider article.col-1, .grider div.col-1, .grider figure.col-1, .grid article.col-1, .grid div.col-1, .grid figure.col-1 {
+        width: calc(((100%/12) * 1) - 17px); }
+      main article.col-2, main div.col-2, main figure.col-2, .grider article.col-2, .grider div.col-2, .grider figure.col-2, .grid article.col-2, .grid div.col-2, .grid figure.col-2 {
+        width: calc(((100%/12) * 2) - 17px); }
+      main article.col-3, main div.col-3, main figure.col-3, .grider article.col-3, .grider div.col-3, .grider figure.col-3, .grid article.col-3, .grid div.col-3, .grid figure.col-3 {
+        width: calc(((100%/12) * 3) - 17px); }
+      main article.col-4, main div.col-4, main figure.col-4, .grider article.col-4, .grider div.col-4, .grider figure.col-4, .grid article.col-4, .grid div.col-4, .grid figure.col-4 {
+        width: calc(((100%/12) * 4) - 17px); }
+      main article.col-5, main div.col-5, main figure.col-5, .grider article.col-5, .grider div.col-5, .grider figure.col-5, .grid article.col-5, .grid div.col-5, .grid figure.col-5 {
+        width: calc(((100%/12) * 5) - 17px); }
+      main article.col-6, main div.col-6, main figure.col-6, .grider article.col-6, .grider div.col-6, .grider figure.col-6, .grid article.col-6, .grid div.col-6, .grid figure.col-6 {
+        width: calc(((100%/12) * 6) - 17px); }
+      main article.col-7, main div.col-7, main figure.col-7, .grider article.col-7, .grider div.col-7, .grider figure.col-7, .grid article.col-7, .grid div.col-7, .grid figure.col-7 {
+        width: calc(((100%/12) * 7) - 17px); }
+      main article.col-8, main div.col-8, main figure.col-8, .grider article.col-8, .grider div.col-8, .grider figure.col-8, .grid article.col-8, .grid div.col-8, .grid figure.col-8 {
+        width: calc(((100%/12) * 8) - 17px); }
+      main article.col-9, main div.col-9, main figure.col-9, .grider article.col-9, .grider div.col-9, .grider figure.col-9, .grid article.col-9, .grid div.col-9, .grid figure.col-9 {
+        width: calc(((100%/12) * 9) - 17px); }
+      main article.col-10, main div.col-10, main figure.col-10, .grider article.col-10, .grider div.col-10, .grider figure.col-10, .grid article.col-10, .grid div.col-10, .grid figure.col-10 {
+        width: calc(((100%/12) * 10) - 17px); }
+      main article.col-11, main div.col-11, main figure.col-11, .grider article.col-11, .grider div.col-11, .grider figure.col-11, .grid article.col-11, .grid div.col-11, .grid figure.col-11 {
+        width: calc(((100%/12) * 11) - 17px); }
+      main article.col-12, main div.col-12, main figure.col-12, .grider article.col-12, .grider div.col-12, .grider figure.col-12, .grid article.col-12, .grid div.col-12, .grid figure.col-12 {
+        width: calc(((100%/12) * 12) - 17px); }
+      main article[class*="col-"], main div[class*="col-"], main figure[class*="col-"], .grider article[class*="col-"], .grider div[class*="col-"], .grider figure[class*="col-"], .grid article[class*="col-"], .grid div[class*="col-"], .grid figure[class*="col-"] {
+        margin-right: 17px; }
+        main article[class*="col-"]:last-of-type, main div[class*="col-"]:last-of-type, main figure[class*="col-"]:last-of-type, .grider article[class*="col-"]:last-of-type, .grider div[class*="col-"]:last-of-type, .grider figure[class*="col-"]:last-of-type, .grid article[class*="col-"]:last-of-type, .grid div[class*="col-"]:last-of-type, .grid figure[class*="col-"]:last-of-type {
+          margin-right: 0; }
+      main article.offset-1, main div.offset-1, main figure.offset-1, .grider article.offset-1, .grider div.offset-1, .grider figure.offset-1, .grid article.offset-1, .grid div.offset-1, .grid figure.offset-1 {
+        margin-left: calc(((100%/12) * 1)); }
+      main article.offset-2, main div.offset-2, main figure.offset-2, .grider article.offset-2, .grider div.offset-2, .grider figure.offset-2, .grid article.offset-2, .grid div.offset-2, .grid figure.offset-2 {
+        margin-left: calc(((100%/12) * 2)); }
+      main article.offset-3, main div.offset-3, main figure.offset-3, .grider article.offset-3, .grider div.offset-3, .grider figure.offset-3, .grid article.offset-3, .grid div.offset-3, .grid figure.offset-3 {
+        margin-left: calc(((100%/12) * 3)); }
+      main article.offset-4, main div.offset-4, main figure.offset-4, .grider article.offset-4, .grider div.offset-4, .grider figure.offset-4, .grid article.offset-4, .grid div.offset-4, .grid figure.offset-4 {
+        margin-left: calc(((100%/12) * 5)); }
+      main article.offset-6, main div.offset-6, main figure.offset-6, .grider article.offset-6, .grider div.offset-6, .grider figure.offset-6, .grid article.offset-6, .grid div.offset-6, .grid figure.offset-6 {
+        margin-left: calc(((100%/12) * 6)); }
+      main article.offset-7, main div.offset-7, main figure.offset-7, .grider article.offset-7, .grider div.offset-7, .grider figure.offset-7, .grid article.offset-7, .grid div.offset-7, .grid figure.offset-7 {
+        margin-left: calc(((100%/12) * 7)); }
+      main article.offset-8, main div.offset-8, main figure.offset-8, .grider article.offset-8, .grider div.offset-8, .grider figure.offset-8, .grid article.offset-8, .grid div.offset-8, .grid figure.offset-8 {
+        margin-left: calc(((100%/12) * 8)); }
+      main article.offset-9, main div.offset-9, main figure.offset-9, .grider article.offset-9, .grider div.offset-9, .grider figure.offset-9, .grid article.offset-9, .grid div.offset-9, .grid figure.offset-9 {
+        margin-left: calc(((100%/12) * 9)); }
+      main article.offset-10, main div.offset-10, main figure.offset-10, .grider article.offset-10, .grider div.offset-10, .grider figure.offset-10, .grid article.offset-10, .grid div.offset-10, .grid figure.offset-10 {
+        margin-left: calc(((100%/12) * 10)); }
+      main article.offset-11, main div.offset-11, main figure.offset-11, .grider article.offset-11, .grider div.offset-11, .grider figure.offset-11, .grid article.offset-11, .grid div.offset-11, .grid figure.offset-11 {
+        margin-left: calc(((100%/12) * 11)); }
+      main article.offset-12, main div.offset-12, main figure.offset-12, .grider article.offset-12, .grider div.offset-12, .grider figure.offset-12, .grid article.offset-12, .grid div.offset-12, .grid figure.offset-12 {
+        margin-left: calc(((100%/12) * 12)); }
+      main article.align-bottom, main div.align-bottom, main figure.align-bottom, .grider article.align-bottom, .grider div.align-bottom, .grider figure.align-bottom, .grid article.align-bottom, .grid div.align-bottom, .grid figure.align-bottom {
+        align-self: flex-end; }
+      main article.align-top, main div.align-top, main figure.align-top, .grider article.align-top, .grider div.align-top, .grider figure.align-top, .grid article.align-top, .grid div.align-top, .grid figure.align-top {
+        align-self: flex-start; }
+      main article.align-center, main div.align-center, main figure.align-center, .grider article.align-center, .grider div.align-center, .grider figure.align-center, .grid article.align-center, .grid div.align-center, .grid figure.align-center {
+        align-self: center; } }*/
+
+.home main article {
+  position: relative;
+  margin-bottom: 7px; }
+  @media (min-width: 800px) {
+    .home main article {
+      margin-bottom: 100px; } }
+  .home main article h1 {
+    display: none; }
+  .home main article img.project__featuredimg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    vertical-align: bottom; }
+    .home main article img.project__featuredimg.hover {
+      display: none; }
+  .home main article.imagehover:hover img.project__featuredimg {
+    display: none; }
+    .home main article.imagehover:hover img.project__featuredimg.hover {
+      display: block; }
+  .home main article video.project__featuredvideo {
+    vertical-align: bottom;
+    width: 100%;
+    height: auto; }
+  .home main article .mejs__controls {
+    display: none; }
+
+section.section__text {
+  margin: 100px 0; }
+  section.section__text p {
+    margin-bottom: 10px; }
+  section.section__text table {
+    width: 100%;
+    font-size: 12px;
+    margin-top: 48px; }
+    section.section__text table tr td:first-of-type {
+      width: calc(100% / 12 * 3); }
+
+section.section__images figure {
+  margin-bottom: 17px; }
+  section.section__images figure img {
+    width: 100%;
+    height: auto; }
+
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  font-size: 16px;
+  line-height: 21px; }
+
+
+a {
+  color: black; }
+
+nav {
+  position: fixed;
+  z-index: 999;
+  top: 21px;
+  left: 21px; }
+  nav ul li a {
+    text-decoration: none; }
+  nav ul li.home {
+    margin-bottom: 18px; }
+
+.page-project #main {
+    background-attachment: fixed;
+    padding: 12px;
+}
+
+
+.project__mobileimg {
+    width: 100%;
+}

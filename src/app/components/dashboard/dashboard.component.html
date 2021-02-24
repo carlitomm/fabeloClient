@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-sm-12 col-lg-6 col-12">
+        <div class="row">
+            <div class="col">
+                <h1>Hello {{admin.name}}
+                    <!--a class="btn btn-outline-dark" routerLink="/">LogOut</a-->
+                    <div class="addItem">
+                        <a class="btn btn-outline-dark" routerLink="/">LogOut</a>
+                        <!--button class="btn btn-outline-dark" style="font-family: sans-serif;"
+                            (click)="onUpgradeContact()">Edit Personal
+                            Information</button-->
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <form class="text-center border border-light p-4">
+
+            <div class="form-row mb-4">
+                <div class="col-sm-12 col-lg-1 col-12">
+                    <label class="form-text" for="name">Name</label>
+                </div>
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input (change)="onUpgradeContact()" class="form-control" type="text" [(ngModel)]="admin.name"
+                        name="name">
+                </div>
+                <div class="col-sm-12 col-lg-1 col-12">
+                    <label for="name">Allias</label>
+                </div>
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input (change)="onUpgradeContact()" class="form-control" type="text" [(ngModel)]="admin.allias"
+                        name="allias">
+                </div>
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-sm-12 col-lg-1 col-12">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input (change)="onUpgradeContact()" class="form-control" type="email" [(ngModel)]="admin.email"
+                        name="email">
+                </div>
+                <div class="col-sm-12 col-lg-1 col-12">
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="col-sm-12 col-lg-5 col-12">
+                    <input (change)="onUpgradeContact()" class="form-control" type="text" [(ngModel)]="admin.phone"
+                        name="phone">
+                </div>
+            </div>
+
+            <!--div class="form-row mb-4" style="text-align: center;">
+                <div class="col-sm-12 col-lg-1 col-12">
+                    <label for="Age">Age</label>
+                </div>
+                <div class="col-sm-12 col-lg-3 col-12">
+                    <input (change)="onUpgradeContact()" class="form-control" type="number" [(ngModel)]="admin.age"
+                        name="Age">
+                </div>
+            </div-->
+
+            <div class="form-row mb-4">
+                <label for="adrdress">Address</label> <br>
+                <input (change)="onUpgradeContact()" class="form-control" type="text" [(ngModel)]="admin.address" name="address">
+            </div>
+
+            <div class="form-row mb-4">
+                <!--div class="col-sm-12 col-lg-2 col-12">
+                    <label for="Username" style="text-align: center;">Username</label>
+                </div-->
+                <div class="col-sm-12 col-lg-6 col-12">
+                    <small class="form-text mb4">Username</small>
+                    <input (change)="onUpgradeContact()" class="form-control" type="text" [(ngModel)]="admin.username"
+                        name="username">
+                        
+                </div>
+                <!--div class="col-sm-12 col-lg-2 col-12">
+                    <label for="phone">Password</label>
+                </div-->
+                <div class="col-sm-12 col-lg-6 col-12">
+                    <small class="form-text mb4">Password</small>
+                    <input (change)="onUpgradeContact()" class="form-control" type="password"
+                        [(ngModel)]="admin.password" name="password">
+                        
+                </div>
+            </div>
+
+            <label for="about">About</label> <br>
+            <textarea (change)="onUpgradeContact()" class="form-control" rows="5" [(ngModel)]="admin.about"
+                name="about"></textarea>
+
+        </form>
+    </div>
+    <div class="col-sm-12 col-lg-6">
+        <app-dossier></app-dossier>
+    </div>
+</div>

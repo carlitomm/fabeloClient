@@ -1,0 +1,37 @@
+<!-- <form (submit)="loginUser($event)">
+    <div class="input">
+        <label>UserName</label>
+        <input type="text">
+    </div>
+    <div class="input">
+        <label>Password</label>
+        <input type="password">
+    </div>
+    <div class="input">
+        <input type="submit" value="Login">
+    </div>
+</form> -->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="../../../assets/images/user2.PNG" id="icon" alt="User Icon">
+    </div>
+
+    <!-- Login Form -->
+    <form (submit)="loginUser($event)">
+      <input type="text" class="fadeIn second" name="login" placeholder="login">
+      <input type="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <!--div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div-->
+
+  </div>
+</div>

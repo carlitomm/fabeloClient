@@ -1,0 +1,38 @@
+<div class="main">
+    <h1>My Projects
+        <div class="addItem">
+            <button class="btn btn-outline-dark" style="font-family: sans-serif;" (click)="increaseOrderOfPorjects()"
+                routerLink="/Configure_Project">Add
+                New Project</button>
+        </div>
+    </h1>
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item justify-content-between" *ngFor="let i of projects; let ind = index">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <span class="btn btn-outline-secondary" style="float: left;" (click)="upOrder(ind)">
+                            <img src="../../../assets/images/up.PNG" width="25px" id="icon" alt="User Icon">
+                        </span>
+                        <!--span>{{i.order}}</span-->
+                        <span class="btn btn-outline-secondary" style="float: left;" (click)="downOrder(ind)">
+                            <img src="../../../assets/images/down.PNG" width="25px" id="icon" alt="User Icon">
+                        </span>
+                    </div>
+                    <div class="col-lg-6">
+                        {{i.titulo}}
+                    </div>
+                    <div class="col-lg-3">
+                        <span class="btn btn-outline-danger" (click)="removeItem(ind)">
+                            <img src="../../../assets/images/delete2.PNG" width="28px" id="icon" alt="User Icon">
+                        </span>
+                        <span style="font-family: sans-serif;" class="btn btn-outline-secondary"
+                            (click)="updateItem(ind)">
+                            <img src="../../../assets/images/edit.PNG" width="28px" id="icon" alt="User Icon">
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

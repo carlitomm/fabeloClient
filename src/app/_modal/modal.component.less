@@ -1,0 +1,106 @@
+﻿/* MODAL STYLES
+-------------------------------*/
+jw-modal {
+  /* modals are hidden by default */
+  display: none;
+
+  .card {}
+
+  .jw-modal {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    background-color: transparent;
+    place-content: center;
+    height: auto;
+    //width: min-content;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+
+
+    .jw-modal-body {
+      max-width: 100%;
+      max-height: 100%;
+      padding: 0;
+      background: transparent;
+      /* margin exposes part of the modal background */
+      margin: 15px;
+      text-align: justify;
+      width: min-content;
+      height: min-content;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .jw-modal-background {
+    /* modal background fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* semi-transparent black  */
+    background-color: transparent;
+    opacity: 0.75;
+
+    /* z-index must be below .jw-modal and above everything else  */
+    z-index: 900;
+  }
+}
+
+body.jw-modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: auto;
+}
+
+@media(max-width:1024px) {
+  .zoom {
+    max-width: 950px;
+  }
+}
+
+@media(max-width:820px) {
+  .zoom {
+    max-width: 770px;
+  }
+}
+
+@media(max-width:780px) {
+  .zoom {
+    max-width: 700px;
+  }
+}
+
+@media(max-width:720px) {
+  .zoom {
+    max-width: 600px;
+  }
+}
+
+@media(max-width:590px) {
+  .zoom {
+    max-width: 520px;
+  }
+}
+
+@media(max-width:420px) {
+  .zoom {
+    max-width: 320px;
+  }
+}
+
+@media(max-width:320px) {
+  .zoom {
+    max-width: 270px;
+  }
+}
