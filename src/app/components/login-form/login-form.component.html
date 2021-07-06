@@ -1,17 +1,3 @@
-<!-- <form (submit)="loginUser($event)">
-    <div class="input">
-        <label>UserName</label>
-        <input type="text">
-    </div>
-    <div class="input">
-        <label>Password</label>
-        <input type="password">
-    </div>
-    <div class="input">
-        <input type="submit" value="Login">
-    </div>
-</form> -->
-
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -22,11 +8,17 @@
     </div>
 
     <!-- Login Form -->
+    <mat-card>
     <form (submit)="loginUser($event)">
-      <input type="text" class="fadeIn second" name="login" placeholder="login">
-      <input type="password" class="fadeIn third" name="login" placeholder="password">
+      <mat-form-field>
+        <input matInput type="text" class="fadeIn second" name="login" placeholder="login">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" class="fadeIn third" name="login" placeholder="password">
+      </mat-form-field>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
+  </mat-card>
 
     <!-- Remind Passowrd -->
     <!--div id="formFooter">

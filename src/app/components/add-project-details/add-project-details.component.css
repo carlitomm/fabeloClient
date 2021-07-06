@@ -61,6 +61,10 @@ ul {
     /*margin-left: -40px;*/
 }
 
+input[type="file"] {
+    visibility: hidden;
+}
+
 /*li{
     border-bottom: 1px solid #bfbfbf;
     /*background-color: #d7d7d7;*/

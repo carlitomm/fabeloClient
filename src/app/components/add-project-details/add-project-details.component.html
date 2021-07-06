@@ -10,102 +10,51 @@
                 </div>
             </div>
             <mat-card>
-                <div class="row">
-                    <!-- <div class="col-sm-12 col-lg-6 col-12">
-                    <label for="titulo">Title</label>
-                </div>
-                <div class="col-sm-12 col-lg-6 col-12">
-                    <input class="form-control" type="text" [(ngModel)]="project.titulo" name="Project Title">
-                </div> -->
-                    <div class="col-sm-12 col-lg-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="text" name="title" [(ngModel)]="project.titulo"
-                                placeholder="Project Title">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- <div class="col-sm-12 col-lg-6 col-12">
-                    <label for="fecha">Creation Date</label>
-                </div>
-                <div class="col-sm-12 col-lg-6 col-12">
-                    <input class="form-control" type="date" [(ngModel)]="project.fecha" name="creation date">
-                </div> -->
-                    <div class="col-sm-12 col-lg-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="date" name="date" [(ngModel)]="project.fecha" placeholder="Fecha">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- <div class="col-sm-12 col-lg-6 col-12">
-                    <label for="dimensiones">Size</label>
-                </div>
-                <div class="col-sm-12 col-lg-6 col-12">
-                    <input class="form-control" type="text" [(ngModel)]="project.dimensiones" name="dimensiones">
-                </div> -->
-                    <div class="col-sm-12 col-lg-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="text" name="dimensiones" [(ngModel)]="project.dimensiones"
-                                placeholder="dimensiones">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- <div class="col-sm-12 col-lg-6 col-12">
-                    <label for="material">Material</label>
-                </div>
-                <div class="col-sm-12 col-lg-6 col-12">
-                    <input class="form-control" type="text" [(ngModel)]="project.material" name="material">
-                </div> -->
-                    <div class="col-sm-12 col-lg-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="text" name="material" [(ngModel)]="project.material"
-                                placeholder="Material">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- <div class="col-sm-12 col-lg-12 col-12">
-                    <label for="descripcion">Description</label>
-                </div>
-                <div class="col-sm-12 col-lg-12 col-12">
-                    <textarea class="form-control" [(ngModel)]="project.descripcion" name="description"></textarea>
-                </div> -->
-                    <div class="col-sm-12 col-lg-12 col-12">
-                        <mat-form-field>
-                            <textarea matInput rows="3" name="description" [(ngModel)]="project.descripcion"
-                                placeholder="description"></textarea>
-                        </mat-form-field>
-                    </div>
-                </div>
-            
-            <div class="row" *ngIf="project?.videos?.length > 0">
-                <!-- <div class="col-sm-12 col-lg-12 col-12">
-                    <label for="descripcion">Video Dimensions</label>
-                </div>
-                <div class="col-sm-12 col-lg-12 col-12">
-                    <textarea class="form-control" [(ngModel)]="project.videoDimensions"
-                        name="videoDimensions"></textarea>
-                </div> -->
                 <div class="col-sm-12 col-lg-12 col-12">
                     <mat-form-field>
-                        <textarea matInput rows="3" name="videoDimensions" [(ngModel)]="project.videoDimensions"
-                            placeholder="videoDimensions"></textarea>
+                        <input matInput type="text" name="title" [(ngModel)]="project.titulo"
+                            placeholder="Titulo">
                     </mat-form-field>
                 </div>
-            </div>
-        </mat-card>
+                <div class="col-sm-12 col-lg-12 col-12">
+                    <mat-form-field>
+                        <input matInput type="date" name="date" [(ngModel)]="project.fecha" placeholder="Fecha">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-lg-12 col-12">
+                    <mat-form-field>
+                        <input matInput type="text" name="dimensiones" [(ngModel)]="project.dimensiones"
+                            placeholder="Dimensiones">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-lg-12 col-12">
+                    <mat-form-field>
+                        <input matInput type="text" name="material" [(ngModel)]="project.material"
+                            placeholder="Material">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-lg-12 col-12">
+                    <mat-form-field>
+                        <textarea matInput rows="3" name="description" [(ngModel)]="project.descripcion"
+                            placeholder="Descripcion"></textarea>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="project?.videos?.length > 0">
+                    <div class="col-sm-12 col-lg-12 col-12">
+                        <mat-form-field>
+                            <textarea matInput rows="3" name="videoDimensions" [(ngModel)]="project.videoDimensions"
+                                placeholder="Dimensiones de Video"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card>
         </div>
 
         <div class="col-sm-12 col-lg-6 col-12">
             <div style="margin-bottom: 10px;">
                 <h1>Images<br></h1>
                 <div>
+                    <button mat-stroked-button type="button" (click)="imageInput.click()">Pick Image</button>
                     <input #imageInput type="file" multiple accept="image/*" (change)="pushImage(imageInput)">
                 </div>
                 <ul class="list-group">
@@ -145,8 +94,10 @@
             <div>
                 <h1>Local Videos</h1>
                 <div id='fileSelector'>
-                    <input type="file" name="fileUpload" id="fileUpload" multiple accept="video/*" ng2FileSelect
+                    <button mat-stroked-button type="button" (click)="videoInput.click()">Pick video</button>
+                    <input type="file" #videoInput name="fileUpload" id="fileUpload" multiple accept="video/*" ng2FileSelect
                         [uploader]="uploader">
+                    <!-- <input #videoInput type="file" multiple accept="video/*" name="fileUpload" id="fileUpload" (change)="pushVideoFile(videoInput)"> -->
                 </div>
                 <ul class="list-group">
                     <li *ngFor="let i of project.videos; let ind = index">

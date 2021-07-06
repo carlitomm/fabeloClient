@@ -138,20 +138,6 @@ export class AddProjectDetailsComponent implements OnInit {
       })
   }
 
-  pushVideo() {
-    if (this.nombre != "" && this.url != "") {
-      this.newVideo = {
-        id: 0,
-        nombre: this.nombre,
-        url: this.processURL(this.url),
-        id_proyecto: this.id
-      }
-      this.nombre = "";
-      this.url = "";
-    }
-    this.project.videos.push(this.newVideo);
-  }
-
   processURL(url: string) {
     return url.replace("https://youtu.be", "https://www.youtube.com/embed")
   }
@@ -192,7 +178,25 @@ export class AddProjectDetailsComponent implements OnInit {
       })
   }
 
+  pushVideo() {
+    if (this.nombre != "" && this.url != "") {
+      this.newVideo = {
+        id: 0,
+        nombre: this.nombre,
+        url: this.processURL(this.url),
+        id_proyecto: this.id
+      }
+      this.nombre = "";
+      this.url = "";
+    }
+    this.project.videos.push(this.newVideo);
+  }
 
+  pushVideoFile(file) {
+    const videoFile = new File([file.rawFile], file.name, { type: 'video/mpge' });
+    this.videosFile.push(videoFile)
+    this.project.videos.push({ id: null, nombre: file.name, url: '', id_proyecto: this.id })
+  }
 
   pushImage(event) {
     if (event.files.length > 0) {
@@ -246,10 +250,6 @@ export class AddProjectDetailsComponent implements OnInit {
     return blob;
   }
 
-  pushVideoFile(file) {
-    const videoFile = new File([file.rawFile], file.name, { type: 'video/mpge' });
-    this.videosFile.push(videoFile)
-    this.project.videos.push({ id: null, nombre: file.name, url: '', id_proyecto: this.id })
-  }
+
 
 }
