@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://canary---yellow.com/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

@@ -7,7 +7,17 @@
     margin-top: 20px;
     font-family: sans-serif;
     
-} 
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
 label{
     font-family: sans-serif;
     font-size: large;

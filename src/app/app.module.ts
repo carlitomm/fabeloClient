@@ -19,44 +19,14 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { CookieService } from 'ngx-cookie-service'
 import { FileUploadModule } from 'ng2-file-upload'
 import { ModalModule } from './_modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'CoMpLiCaTePath_f@3e10Hun8',
-    component: LoginFormComponent
-  },
-  {
-    path: 'dashboard', 
-    canActivate: [AuthgurdGuard],
-    component: DashboardComponent
-  },
-  {
-    path: 'details/:id',
-    component: PojectDetailsComponent
-  },
-  {
-    path: 'Configure_Project',
-    component: AddProjectDetailsComponent
-  },
-  {
-    path: 'Configure_Project/:id',
-    component: AddProjectDetailsComponent
-  },
-  {
-    path: 'contact',
-    component: ContactComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  }
-
-]
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatInputModule } from "@angular/material/input";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -75,9 +45,15 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
     ModalModule,
-    FileUploadModule
+    FileUploadModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [ 
     AuthgurdGuard, 

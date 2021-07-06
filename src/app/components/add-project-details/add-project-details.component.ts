@@ -41,8 +41,10 @@ export class AddProjectDetailsComponent implements OnInit {
     videoDimensions: ''
   };
 
-  isUpdate: boolean = false;
+  // isUpdate: boolean = false;
   isCreate: boolean = true;
+  isLoading = false;
+
   constructor(
     private service: ProjectService,
     private activatedRute: ActivatedRoute,
@@ -55,19 +57,16 @@ export class AddProjectDetailsComponent implements OnInit {
       this.attatchmentList.push(JSON.parse(response));
     }
 
-    activatedRute.params.subscribe(
-      data => {
+    activatedRute.params
+      .subscribe(data => {
         if (data.id) {
           this.id = this.activatedRute.snapshot.params.id
           this.initUpgrade();
-        }
-        else {
-          this.isUpdate = false;
+        } else {
+          // this.isUpdate = false;
           this.isCreate = true;
         }
-      }
-    )
-
+      });
   }
 
   initUpgrade() {
@@ -75,58 +74,68 @@ export class AddProjectDetailsComponent implements OnInit {
       data => {
         this.project = data;
       }, err => {
-
+        console.log(err);
       })
-    this.isUpdate = true;
+    // this.isUpdate = true;
     this.isCreate = false;
-
   }
 
   ngOnInit() { }
 
   submitProject() {
-    if (this.imagesFile.length == 0) {
-      alert("ERROR!, a project can not be created without images");
-      return;
+    this.isLoading = true
+    if (this.isCreate) {
+      if (this.imagesFile.length == 0) {
+        alert("ERROR!, a project can not be created without images");
+        return;
+      }
+      this.service.createProject(this.project)
+        .subscribe((data: any) => {
+          this.uploadMedia(data);
+        }, err => {
+          console.log(err);
+        });
+    } else {
+      this.service.upgradeProject(this.project)
+        .subscribe((data: any) => {
+          this.uploadMedia(data);
+        }, err => {
+          console.log(err);
+        });
     }
-    this.service.createProject(this.project).subscribe(
-      (data: any) => {
-        let id = data.identifiers[0].id;
-        this.project.id = id;
-        let formData = new FormData();
-        let videoFormData = new FormData();
-        for (let i = 0; i < this.imagesFile.length; i++) {
-          const element = this.imagesFile[i];
-          formData.append('files', element);
-        }
-        formData.append('projectId', id.toString())
-        this.imageService.setImage(formData).subscribe(
-          data => {
-            //image created
-            if (this.videosFile.length > 0) {
-              for (let i = 0; i < this.videosFile.length; i++) {
-                const element = this.videosFile[i];
-                videoFormData.append('files', element);
-              }
-              videoFormData.append('projectId', id.toString())
-              this.videoService.setVideo(videoFormData).subscribe(
-                data => {
-                  //viedo created
-                  this.route.navigate(['dashboard'])
-                }, err => {
+  }
 
-                })
-            } else {
+  private uploadMedia(data: any) {
+    let id = data.identifiers[0].id;
+    this.project.id = id;
+    let imageformData = new FormData();
+    let videoFormData = new FormData();
+    for (let i = 0; i < this.imagesFile.length; i++) {
+      const element = this.imagesFile[i];
+      imageformData.append('files', element);
+    }
+    imageformData.append('projectId', id.toString())
+    this.imageService.setImage(imageformData)
+      .subscribe(data => {
+        if (this.videosFile.length > 0) {
+          for (let i = 0; i < this.videosFile.length; i++) {
+            const element = this.videosFile[i];
+            videoFormData.append('files', element);
+          }
+          videoFormData.append('projectId', id.toString())
+          this.videoService.setVideo(videoFormData)
+            .subscribe(data => {
+              this.isLoading = false;
               this.route.navigate(['dashboard'])
-            }
-          }, err => {
-
-          })
-
-
+            }, err => {
+              console.log(err);
+            })
+        } else {
+          this.route.navigate(['dashboard'])
+        }
       }, err => {
-
-      });
+        console.log(err);
+      })
   }
 
   pushVideo() {
@@ -168,64 +177,22 @@ export class AddProjectDetailsComponent implements OnInit {
 
   removeImageFile(index) {
     this.imagesFile.splice(index, 1);
-    this.imageService.deleteImage(this.project.images[index].id).subscribe(
-      data => {
+    this.imageService.deleteImage(this.project.images[index].id)
+      .subscribe(data => {
         if (data)
-          this.imageService.deleteImageFile(this.id, this.project.images[index].nombre).subscribe(
-            data => {
+          this.imageService.deleteImageFile(this.id, this.project.images[index].nombre)
+            .subscribe(data => {
               this.project.images.splice(index, 1)
               alert("Imagen borrada");
             }, err => {
-
-            }
-          )
+              console.log(err);
+            })
       }, err => {
-
-      })
-
-  }
-
-  upgradeProject() {
-
-    this.service.upgradeProject(this.project).subscribe(
-      (data: any) => {
-        let id = data.identifiers[0].id;
-        this.project.id = id;
-        let formData = new FormData();
-        let videoFormData = new FormData();
-
-        for (let i = 0; i < this.imagesFile.length; i++) {
-          const element = this.imagesFile[i];
-          formData.append('files', element);
-        }
-        formData.append('projectId', id.toString())
-        this.imageService.setImage(formData).subscribe(
-          data => {
-            if (this.videosFile.length > 0) {
-              for (let i = 0; i < this.videosFile.length; i++) {
-                const element = this.videosFile[i];
-                videoFormData.append('files', element);
-              }
-              videoFormData.append('projectId', id.toString())
-              this.videoService.setVideo(videoFormData).subscribe(
-                data => {
-                  this.route.navigate(['dashboard'])  
-                }, err => {
-
-                })
-            } else
-              this.route.navigate(['dashboard'])
-
-
-          }, err => {
-
-          })
-
-
-      }, err => {
-
+        console.log(err);
       })
   }
+
+
 
   pushImage(event) {
     if (event.files.length > 0) {

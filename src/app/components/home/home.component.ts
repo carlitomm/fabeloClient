@@ -78,7 +78,6 @@ export class HomeComponent implements OnInit {
           this.imageNames.push({id:data.id,name:data.name[0]});
           if(this.projects.length >= i){
             this.imagesLoaded = true;
-            console.log('entro')
           }
             
         }, err => {
