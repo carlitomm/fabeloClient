@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-sm-12 col-lg-12 col-12">
             <main id="main">
-                
+
                 <!----------------
                     Youtube Videos
                 -------------------->
@@ -48,15 +48,17 @@
                 <section style="text-align: center;" *ngFor="let i of videoNames let ind = index"
                     class="section section__images grid">
                     <div>
-                        <video src="{{server}}/video/getVideo/{{id}}/{{videoNames[ind]}}"
-                            style="max-width: 750px; max-height: 750px;" autoplay="True" controls></video>
+                        <!-- style="max-width: 750px; max-height: 750px;" -->
+                        <video height=340 width=640 autoplay="True" controls>
+                            <source src="{{server}}/video/getVideo/{{id}}/{{videoNames[ind]}}">
+                        </video>
                     </div>
                 </section>
 
                 <!----------------
                     Images
                 -------------------->
-                <div> 
+                <div>
                     <section *ngFor="let i of imageNames let ind = index" class="section section__images grid">
                         <!--figure class="col-7 align-top"-->
                         <figure style="text-align: center;">
@@ -74,22 +76,23 @@
 
                             <table style="font-size: medium;" cellspacing="1" cellpadding="1">
                                 <tbody>
-                                    <tr *ngIf = "project?.material?.length > 0">
+                                    <tr *ngIf="project?.material?.length > 0">
                                         <td>Materials </td>
                                         <td>{{project.material}}&nbsp;&nbsp;</td>
                                     </tr>
-                                    <tr *ngIf = "project?.dimensiones?.length > 0">
+                                    <tr *ngIf="project?.dimensiones?.length > 0">
                                         <td>Dimensions </td>
                                         <td>{{project.dimensiones}}</td><br>
                                     </tr>
-                                    <tr *ngIf = "project?.videoDimensions?.length > 0">
+                                    <tr *ngIf="project?.videoDimensions?.length > 0">
                                         <td>Video Dimensions </td>
                                         <td>{{project.videoDimensions}}</td>
                                     </tr>
-                
+
                                 </tbody>
-                        </table>
-                        <p style="width: 100%; padding: 5px;font-size: initial;" [innerHTML]="replaceURLText(project.descripcion)"></p>    
+                            </table>
+                            <p style="width: 100%; padding: 5px;font-size: initial;"
+                                [innerHTML]="replaceURLText(project.descripcion)"></p>
                         </div>
                     </section>
                 </div>
@@ -99,9 +102,11 @@
 </body>
 
 <jw-modal id="custom-modal-zoom">
-    <div class="card" style="width: 100%; height: 100%; background-color: transparent; place-content: center;" *ngIf="imageNames[zoomImage]">
-        <figure style="text-align: center; width: max-content; max-width: 100%; max-height: 100%;" >
-            <img class="zoom" style="max-width: 100%;max-height: 600px;" src="{{server}}/images/getImage/{{id}}/{{imageNames[zoomImage]}}" alt="">
+    <div class="card" style="width: 100%; height: 100%; background-color: transparent; place-content: center;"
+        *ngIf="imageNames[zoomImage]">
+        <figure style="text-align: center; width: max-content; max-width: 100%; max-height: 100%;">
+            <img class="zoom" style="max-width: 100%;max-height: 600px;"
+                src="{{server}}/images/getImage/{{id}}/{{imageNames[zoomImage]}}" alt="">
         </figure>
     </div>
 </jw-modal>
