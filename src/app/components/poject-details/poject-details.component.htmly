@@ -49,7 +49,7 @@
                     class="section section__images grid">
                     <div>
                         <video height=140 width=340 autoplay="True" controls>
-                            <source src="{{server}}/video/getVideo/{{id}}/{{videoNames[ind]}}" type="audio/mp4>
+                            <source src="{{server}}/video/getVideo/{{id}}/{{videoNames[ind]}}" type="video/mp4>
                         </video>
                     </div>
                 </section>
